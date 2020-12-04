@@ -1,0 +1,54 @@
+T1,IBM,200.0,B,4.50
+                    T2,IBM,200.0,B,4.50
+T1,IBM,200.0,B,4.60
+                                        T1,MSFT,200.0,B,8.10
+                     T2,IBM,300.0,B,4.60
+                                                             T1,IBM,200,S,4.75
+                                                                              T2,IBM,100,S,4.70
+                                                                                               T3,MSFT,50,S,6.75
+                                                                               T2,IBM,300,S,4.85
+                                                                                                                 T3,MSFT,30,B,6.95
+
+[TradeTransactionTree{tradeItemSignature=TradeItemSignature{traderId='T1', stockSymbol='MSFT'},
+saleQueue=[],
+byeQueue=[Trade{traderId='T1', stockSymbol='MSFT', quantity=200.0, buyOrSell=B, price=8.1}]},
+
+TradeTransactionTree{tradeItemSignature=TradeItemSignature{traderId='T2', stockSymbol='IBM'},
+saleQueue=[Trade{traderId='T2', stockSymbol='IBM', quantity=100.0, buyOrSell=S, price=4.7}, Trade{traderId='T2', stockSymbol='IBM', quantity=300.0, buyOrSell=S, price=4.85}],
+byeQueue=[Trade{traderId='T2', stockSymbol='IBM', quantity=200.0, buyOrSell=B, price=4.5}, Trade{traderId='T2', stockSymbol='IBM', quantity=300.0, buyOrSell=B, price=4.6}]},
+
+TradeTransactionTree{tradeItemSignature=TradeItemSignature{traderId='T1', stockSymbol='IBM'},
+saleQueue=[Trade{traderId='T1', stockSymbol='IBM', quantity=200.0, buyOrSell=S, price=4.75}],
+byeQueue=[Trade{traderId='T1', stockSymbol='IBM', quantity=200.0, buyOrSell=B, price=4.5}, Trade{traderId='T1', stockSymbol='IBM', quantity=200.0, buyOrSell=B, price=4.6}]},
+
+TradeTransactionTree{tradeItemSignature=TradeItemSignature{traderId='T3', stockSymbol='MSFT'},
+saleQueue=[Trade{traderId='T3', stockSymbol='MSFT', quantity=50.0, buyOrSell=S, price=6.75}],
+byeQueue=[Trade{traderId='T3', stockSymbol='MSFT', quantity=30.0, buyOrSell=B, price=6.95}]}]
+
+
+
+
+
+
+
+
+{TradeSignature{traderId='T1', stockSymbol='MSFT', buyOrSell=B}=
+[Trade{traderId='T1', stockSymbol='MSFT', quantity=200.0, buyOrSell=B, price=8.1}],
+
+TradeSignature{traderId='T2', stockSymbol='IBM', buyOrSell=B}=
+[Trade{traderId='T2', stockSymbol='IBM', quantity=200.0, buyOrSell=B, price=4.5}, Trade{traderId='T2', stockSymbol='IBM', quantity=300.0, buyOrSell=B, price=4.6}],
+
+TradeSignature{traderId='T1', stockSymbol='IBM', buyOrSell=S}=
+[Trade{traderId='T1', stockSymbol='IBM', quantity=200.0, buyOrSell=S, price=4.75}],
+
+TradeSignature{traderId='T1', stockSymbol='IBM', buyOrSell=B}=
+[Trade{traderId='T1', stockSymbol='IBM', quantity=200.0, buyOrSell=B, price=4.5}, Trade{traderId='T1', stockSymbol='IBM', quantity=200.0, buyOrSell=B, price=4.6}],
+
+TradeSignature{traderId='T2', stockSymbol='IBM', buyOrSell=S}=
+[Trade{traderId='T2', stockSymbol='IBM', quantity=100.0, buyOrSell=S, price=4.7}, Trade{traderId='T2', stockSymbol='IBM', quantity=300.0, buyOrSell=S, price=4.85}],
+
+TradeSignature{traderId='T3', stockSymbol='MSFT', buyOrSell=S}=
+[Trade{traderId='T3', stockSymbol='MSFT', quantity=50.0, buyOrSell=S, price=6.75}],
+
+TradeSignature{traderId='T3', stockSymbol='MSFT', buyOrSell=B}=
+[Trade{traderId='T3', stockSymbol='MSFT', quantity=30.0, buyOrSell=B, price=6.95}]}

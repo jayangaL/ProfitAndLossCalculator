@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TradeTransactionSignature.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">virya_java_test</a> &gt; <a href="index.source.html" class="el_package">com.viryaconsulting.model</a> &gt; <span class="el_source">TradeTransactionSignature.java</span></div><h1>TradeTransactionSignature.java</h1><pre class="source lang-java linenums">package com.viryaconsulting.model;
+
+import com.google.common.base.Objects;
+
+public class TradeTransactionSignature {
+
+    private String traderId;
+    private String stockSymbol;
+    private char buyOrSell;
+
+    public String getTraderId() {
+<span class="fc" id="L12">        return traderId;</span>
+    }
+
+    public void setTraderId(String traderId) {
+<span class="nc" id="L16">        this.traderId = traderId;</span>
+<span class="nc" id="L17">    }</span>
+
+    public String getStockSymbol() {
+<span class="fc" id="L20">        return stockSymbol;</span>
+    }
+
+    public void setStockSymbol(String stockSymbol) {
+<span class="nc" id="L24">        this.stockSymbol = stockSymbol;</span>
+<span class="nc" id="L25">    }</span>
+
+    public char getBuyOrSell() {
+<span class="fc" id="L28">        return buyOrSell;</span>
+    }
+
+    public void setBuyOrSell(char buyOrSell) {
+<span class="nc" id="L32">        this.buyOrSell = buyOrSell;</span>
+<span class="nc" id="L33">    }</span>
+
+<span class="fc" id="L35">    public TradeTransactionSignature(Trade trade) {</span>
+<span class="fc" id="L36">        this.traderId = trade.getTraderId();</span>
+<span class="fc" id="L37">        this.stockSymbol = trade.getStockSymbol();</span>
+<span class="fc" id="L38">        this.buyOrSell = trade.getBuyOrSell();</span>
+<span class="fc" id="L39">    }</span>
+
+<span class="nc" id="L41">    public TradeTransactionSignature(){}</span>
+
+    @Override
+    public boolean equals(Object o) {
+<span class="pc bpc" id="L45" title="1 of 2 branches missed.">        if (this == o) return true;</span>
+<span class="pc bpc" id="L46" title="2 of 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
+<span class="fc" id="L47">        TradeTransactionSignature that = (TradeTransactionSignature) o;</span>
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">        return buyOrSell == that.buyOrSell &amp;&amp;</span>
+<span class="pc bpc" id="L49" title="1 of 2 branches missed.">                Objects.equal(traderId, that.traderId) &amp;&amp;</span>
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">                Objects.equal(stockSymbol, that.stockSymbol);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="fc" id="L55">        return Objects.hashCode(traderId, stockSymbol, buyOrSell);</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L60">        return &quot;TradeSignature{&quot; +</span>
+                &quot;traderId='&quot; + traderId + '\'' +
+                &quot;, stockSymbol='&quot; + stockSymbol + '\'' +
+                &quot;, buyOrSell=&quot; + buyOrSell +
+                '}';
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

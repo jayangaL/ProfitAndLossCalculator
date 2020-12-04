@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ResultExporter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">virya_java_test</a> &gt; <a href="index.source.html" class="el_package">com.viryaconsulting.processor</a> &gt; <span class="el_source">ResultExporter.java</span></div><h1>ResultExporter.java</h1><pre class="source lang-java linenums">package com.viryaconsulting.processor;
+
+import com.viryaconsulting.model.TradeTransactionResult;
+import com.viryaconsulting.util.ResourceUtils;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.DecimalFormat;
+import java.util.List;
+
+<span class="fc" id="L13">public class ResultExporter {</span>
+
+<span class="fc" id="L15">    private static DecimalFormat df2 = new DecimalFormat(&quot;#.##&quot;);</span>
+
+
+    public File exportDat(List&lt;TradeTransactionResult&gt; tradeTransactionResults) throws IOException {
+<span class="fc" id="L19">        File tempFile = ResourceUtils.createTemporyFile(&quot;result-&quot;, &quot;.dat&quot;);</span>
+<span class="fc" id="L20">        return exportDat(tradeTransactionResults, tempFile);</span>
+    }
+
+    public File exportDat(List&lt;TradeTransactionResult&gt; tradeTransactionResults, File file) throws IOException {
+<span class="fc" id="L24">        PrintWriter pw = new PrintWriter(new FileWriter(file));</span>
+
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        for (TradeTransactionResult tradeTransactionResult : tradeTransactionResults) {</span>
+<span class="fc" id="L27">            pw.write(tradeTransactionResult.getTraderId());</span>
+<span class="fc" id="L28">            System.out.print(tradeTransactionResult.getTraderId());</span>
+<span class="fc" id="L29">            pw.write(&quot;,&quot;);</span>
+<span class="fc" id="L30">            System.out.print(&quot;,&quot;);</span>
+<span class="fc" id="L31">            pw.write(tradeTransactionResult.getStockSymbol());</span>
+<span class="fc" id="L32">            System.out.print(tradeTransactionResult.getStockSymbol());</span>
+<span class="fc" id="L33">            pw.write(&quot;,&quot;);</span>
+<span class="fc" id="L34">            System.out.print(&quot;,&quot;);</span>
+<span class="fc" id="L35">            pw.write(df2.format(tradeTransactionResult.getPnl()));</span>
+<span class="fc" id="L36">            System.out.print(df2.format(tradeTransactionResult.getPnl()));</span>
+<span class="fc" id="L37">            pw.write(&quot;,&quot;);</span>
+<span class="fc" id="L38">            System.out.print(&quot;,&quot;);</span>
+<span class="fc" id="L39">            pw.write(df2.format(tradeTransactionResult.getResidual()));</span>
+<span class="fc" id="L40">            System.out.print(df2.format(tradeTransactionResult.getResidual()));</span>
+<span class="fc" id="L41">            pw.write(&quot;\n&quot;);</span>
+<span class="fc" id="L42">            System.out.println();</span>
+<span class="fc" id="L43">        }</span>
+
+<span class="fc" id="L45">        pw.close();</span>
+<span class="fc" id="L46">        System.out.println(file.toPath());</span>
+<span class="fc" id="L47">        return file;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

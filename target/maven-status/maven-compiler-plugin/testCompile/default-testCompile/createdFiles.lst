@@ -1,0 +1,10 @@
+com\viryaconsulting\processor\ResultExporterTest.class
+com\viryaconsulting\processor\PNLCalculatorTest.class
+com\viryaconsulting\ITMain.class
+com\viryaconsulting\BaseTest.class
+com\viryaconsulting\processor\WorkerTest.class
+com\viryaconsulting\processor\TradeLoaderTest.class
+com\viryaconsulting\util\ResourceUtilsTest.class
+com\viryaconsulting\MainTest.class
+com\viryaconsulting\util\ConstantsTest.class
+com\viryaconsulting\util\ValidationUtilsTest.class

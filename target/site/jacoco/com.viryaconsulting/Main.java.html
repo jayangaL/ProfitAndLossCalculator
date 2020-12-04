@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">virya_java_test</a> &gt; <a href="index.source.html" class="el_package">com.viryaconsulting</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">package com.viryaconsulting;
+
+import com.viryaconsulting.processor.PNLCalculator;
+import com.viryaconsulting.processor.ResultExporter;
+import com.viryaconsulting.processor.TradeLoader;
+import com.viryaconsulting.processor.Worker;
+
+import java.io.*;
+import java.net.URISyntaxException;
+
+import static com.viryaconsulting.util.Constants.*;
+
+<span class="nc" id="L13">public class Main {</span>
+
+
+    public static void main(String[] args) throws URISyntaxException, IOException {
+
+<span class="nc" id="L18">        Worker worker = new Worker(new TradeLoader(), new PNLCalculator(), new ResultExporter());</span>
+<span class="nc" id="L19">        String filename = &quot;trades.dat&quot;;</span>
+<span class="nc bnc" id="L20" title="All 2 branches missed.">        if (args.length &gt; 0) {</span>
+<span class="nc" id="L21">            filename = args[0];</span>
+        }
+<span class="nc" id="L23">        System.out.println(invoke(worker, filename));</span>
+<span class="nc" id="L24">    }</span>
+
+    public static File invoke(Worker worker, String filename) throws IOException, URISyntaxException {
+<span class="fc" id="L27">        System.out.println(INVOKE_METHOD_CALLED_PRINT_MSG);</span>
+<span class="fc" id="L28">        return worker.process(filename);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

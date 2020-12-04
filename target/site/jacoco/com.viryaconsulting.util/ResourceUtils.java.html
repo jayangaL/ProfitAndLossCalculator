@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ResourceUtils.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">virya_java_test</a> &gt; <a href="index.source.html" class="el_package">com.viryaconsulting.util</a> &gt; <span class="el_source">ResourceUtils.java</span></div><h1>ResourceUtils.java</h1><pre class="source lang-java linenums">package com.viryaconsulting.util;
+
+import java.io.*;
+import java.nio.file.Files;
+
+import static com.viryaconsulting.util.Constants.FILE_NOT_FOUND;
+
+public class ResourceUtils {
+
+    public static File getFileFromResource(String fileName) throws IOException {
+<span class="fc" id="L11">        System.out.println(fileName);</span>
+<span class="fc" id="L12">        InputStream inputStream = ResourceUtils.class.getClassLoader().getResourceAsStream(fileName);</span>
+<span class="fc bfc" id="L13" title="All 2 branches covered.">        if (inputStream == null) {</span>
+<span class="fc" id="L14">            File file = new File(fileName);</span>
+<span class="fc bfc" id="L15" title="All 2 branches covered.">            if (!file.exists())</span>
+<span class="fc" id="L16">                throw new IllegalArgumentException(String.format(FILE_NOT_FOUND, fileName));</span>
+<span class="fc" id="L17">            return file;</span>
+        } else {
+
+<span class="fc" id="L20">            return createFileFromInputStream(inputStream, fileName);</span>
+        }
+    }
+
+    public static File createTemporyFile(String prefix, String suffix) throws IOException {
+<span class="fc" id="L25">        return Files.createTempFile(prefix, suffix).toFile();</span>
+    }
+
+    public static String[] getLinesFromFile(File file) throws IOException {
+<span class="fc" id="L29">        return Files.readAllLines(file.toPath()).toArray(new String[0]);</span>
+    }
+
+    public static String[] getParametersFromLine(String line) {
+<span class="fc" id="L33">        return line.trim().split(&quot;,&quot;);</span>
+    }
+
+    public static File createFileFromInputStream(InputStream inputStream, String filename) throws IOException {
+
+<span class="fc" id="L38">        byte[] buffer = new byte[inputStream.available()];</span>
+<span class="fc" id="L39">        inputStream.read(buffer);</span>
+
+<span class="fc" id="L41">        File temporyFile = createTemporyFile(&quot;-&quot;, filename);</span>
+
+<span class="fc" id="L43">        OutputStream outStream = new FileOutputStream(temporyFile);</span>
+<span class="fc" id="L44">        outStream.write(buffer);</span>
+<span class="fc" id="L45">        outStream.flush();</span>
+<span class="fc" id="L46">        inputStream.close();</span>
+<span class="fc" id="L47">        return temporyFile;</span>
+    }
+
+<span class="fc" id="L50">    private ResourceUtils() {</span>
+<span class="fc" id="L51">        throw new UnsupportedOperationException();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

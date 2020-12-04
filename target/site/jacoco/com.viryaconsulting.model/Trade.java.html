@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Trade.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">virya_java_test</a> &gt; <a href="index.source.html" class="el_package">com.viryaconsulting.model</a> &gt; <span class="el_source">Trade.java</span></div><h1>Trade.java</h1><pre class="source lang-java linenums">package com.viryaconsulting.model;
+
+<span class="fc" id="L3">public class Trade {</span>
+    private int index;
+    private String traderId;
+    private String stockSymbol;
+    private double quantity;
+    private char buyOrSell;
+    private double price;
+
+    public String getTraderId() {
+<span class="fc" id="L12">        return traderId;</span>
+    }
+
+    public void setTraderId(String traderId) {
+<span class="fc" id="L16">        this.traderId = traderId;</span>
+<span class="fc" id="L17">    }</span>
+
+    public String getStockSymbol() {
+<span class="fc" id="L20">        return stockSymbol;</span>
+    }
+
+    public void setStockSymbol(String stockSymbol) {
+<span class="fc" id="L24">        this.stockSymbol = stockSymbol;</span>
+<span class="fc" id="L25">    }</span>
+
+    public double getQuantity() {
+<span class="fc" id="L28">        return quantity;</span>
+    }
+
+    public void setQuantity(double quantity) {
+<span class="fc" id="L32">        this.quantity = quantity;</span>
+<span class="fc" id="L33">    }</span>
+
+    public char getBuyOrSell() {
+<span class="fc" id="L36">        return buyOrSell;</span>
+    }
+
+    public void setBuyOrSell(char buyOrSell) {
+<span class="fc" id="L40">        this.buyOrSell = buyOrSell;</span>
+<span class="fc" id="L41">    }</span>
+
+    public double getPrice() {
+<span class="fc" id="L44">        return price;</span>
+    }
+
+    public void setPrice(double price) {
+<span class="fc" id="L48">        this.price = price;</span>
+<span class="fc" id="L49">    }</span>
+
+    @Override
+    public String toString() {
+<span class="fc" id="L53">        return &quot;Trade{&quot; +</span>
+                &quot;traderId='&quot; + traderId + '\'' +
+                &quot;, stockSymbol='&quot; + stockSymbol + '\'' +
+                &quot;, quantity=&quot; + quantity +
+                &quot;, buyOrSell=&quot; + buyOrSell +
+                &quot;, price=&quot; + price +
+                '}';
+    }
+
+    public int getIndex() {
+<span class="fc" id="L63">        return index;</span>
+    }
+
+    public void setIndex(int index) {
+<span class="fc" id="L67">        this.index = index;</span>
+<span class="fc" id="L68">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

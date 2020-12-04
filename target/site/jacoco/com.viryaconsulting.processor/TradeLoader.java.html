@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TradeLoader.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">virya_java_test</a> &gt; <a href="index.source.html" class="el_package">com.viryaconsulting.processor</a> &gt; <span class="el_source">TradeLoader.java</span></div><h1>TradeLoader.java</h1><pre class="source lang-java linenums">package com.viryaconsulting.processor;
+
+import com.viryaconsulting.exception.InvalidArgumentException;
+import com.viryaconsulting.exception.InvalidNumberOfArgumentsException;
+import com.viryaconsulting.exception.NullTradeInputException;
+import com.viryaconsulting.model.Trade;
+import com.viryaconsulting.util.ValidationUtils;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static com.viryaconsulting.util.Constants.*;
+import static com.viryaconsulting.util.ResourceUtils.getLinesFromFile;
+import static com.viryaconsulting.util.ResourceUtils.getParametersFromLine;
+
+<span class="fc" id="L19">public class TradeLoader {</span>
+
+    public List&lt;Trade&gt; loadTrades(File file) throws IOException {
+<span class="fc" id="L22">        String[] lines = getLinesFromFile(file);</span>
+<span class="fc" id="L23">        return loadTrades(lines);</span>
+
+    }
+
+    public List&lt;Trade&gt; loadTrades(String[] lines) {
+<span class="fc" id="L28">        List&lt;Trade&gt; trades = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L29">        int i = 0;</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        for (String line : lines) {</span>
+<span class="fc" id="L31">            Trade trade = createTrade(line);</span>
+<span class="fc" id="L32">            trade.setIndex(++i);</span>
+<span class="fc" id="L33">            trades.add(trade);</span>
+        }
+<span class="fc" id="L35">        return trades;</span>
+    }
+
+    public Trade createTrade(String line) {
+<span class="fc" id="L39">        String[] params = getParametersFromLine(line);</span>
+<span class="fc" id="L40">        return createTrade(params);</span>
+    }
+
+    public Trade createTrade(String[] params) {
+<span class="fc" id="L44">        validateTrade(params);</span>
+<span class="fc" id="L45">        Trade trade = new Trade();</span>
+<span class="fc" id="L46">        trade.setTraderId(params[0].trim());</span>
+<span class="fc" id="L47">        trade.setStockSymbol(params[1].trim());</span>
+<span class="fc" id="L48">        trade.setQuantity(Double.parseDouble(params[2].trim()));</span>
+<span class="fc" id="L49">        trade.setBuyOrSell(params[3].charAt(0));</span>
+<span class="fc" id="L50">        trade.setPrice(Double.parseDouble(params[4]));</span>
+<span class="fc" id="L51">        return trade;</span>
+    }
+
+    public boolean validateTrade(String[] params) {
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        if (params == null)</span>
+<span class="fc" id="L56">            throw new NullTradeInputException();</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">        if (params.length != 5)</span>
+<span class="fc" id="L58">            throw new InvalidNumberOfArgumentsException(params.length, Arrays.toString(params));</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        if (!ValidationUtils.isNonEmptyString(params[0]))</span>
+<span class="fc" id="L60">            throw new InvalidArgumentException(1, TRADE_ID);</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">        if (!ValidationUtils.isNonEmptyString(params[1]))</span>
+<span class="fc" id="L62">            throw new InvalidArgumentException(2, STOCK_SYMBOL);</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">        if (!ValidationUtils.isNonEmptyString(params[2])) {</span>
+<span class="fc" id="L64">            throw new InvalidArgumentException(3, QUANTITY);</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">        } else if (!ValidationUtils.isNumber(params[2])) {</span>
+<span class="fc" id="L66">            throw new InvalidArgumentException(3, NUMBER, QUANTITY, params[2]);</span>
+        }
+<span class="fc bfc" id="L68" title="All 2 branches covered.">        if (!ValidationUtils.isNonEmptyString(params[3])) {</span>
+<span class="fc" id="L69">            throw new InvalidArgumentException(4, BUY_OR_SALE);</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">        } else if (!ValidationUtils.isBuyOrSale(params[3])) {</span>
+<span class="fc" id="L71">            throw new InvalidArgumentException(4, BUY_OR_SALE, BUY_OR_SALE_VALID, params[3]);</span>
+        }
+<span class="fc bfc" id="L73" title="All 2 branches covered.">        if (!ValidationUtils.isNonEmptyString(params[4])) {</span>
+<span class="fc" id="L74">            throw new InvalidArgumentException(5, PRICE);</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">        } else if (!ValidationUtils.isPositiveNumber(params[4])) {</span>
+<span class="fc" id="L76">            throw new InvalidArgumentException(5, PRICE, NUMBER, params[4]);</span>
+        }
+
+<span class="fc" id="L79">        return true;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

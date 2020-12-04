@@ -1,0 +1,17 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+virya_java_test,com.viryaconsulting.model,TradeTransactionTree,20,74,3,3,4,17,6,8,3,8
+virya_java_test,com.viryaconsulting.model,TradeItemSignature,29,67,3,7,6,12,7,7,4,5
+virya_java_test,com.viryaconsulting.model,Trade,0,81,0,0,0,20,0,14,0,14
+virya_java_test,com.viryaconsulting.model,TradeTransactionResult,71,73,14,0,8,19,9,11,2,11
+virya_java_test,com.viryaconsulting.model,TradeTransactionSignature,20,103,6,6,7,16,10,7,4,7
+virya_java_test,com.viryaconsulting.exception,InvalidNumberOfArgumentsException,0,16,0,0,0,2,0,1,0,1
+virya_java_test,com.viryaconsulting.exception,InvalidArgumentException,0,40,0,0,0,4,0,2,0,2
+virya_java_test,com.viryaconsulting.exception,NullTradeInputException,0,4,0,0,0,2,0,1,0,1
+virya_java_test,com.viryaconsulting.processor,PNLCalculator,0,309,1,29,0,70,1,21,0,7
+virya_java_test,com.viryaconsulting.processor,Worker,0,28,0,0,0,8,0,2,0,2
+virya_java_test,com.viryaconsulting.processor,ResultExporter,0,108,0,2,0,26,0,5,0,4
+virya_java_test,com.viryaconsulting.processor,TradeLoader,0,215,0,22,0,41,0,17,0,6
+virya_java_test,com.viryaconsulting,Main,31,7,2,0,7,2,3,1,2,1
+virya_java_test,com.viryaconsulting.util,ValidationUtils,0,43,0,8,0,9,0,9,0,5
+virya_java_test,com.viryaconsulting.util,ResourceUtils,0,88,0,4,0,21,0,8,0,6
+virya_java_test,com.viryaconsulting.util,Constants,0,6,0,0,0,2,0,1,0,1
